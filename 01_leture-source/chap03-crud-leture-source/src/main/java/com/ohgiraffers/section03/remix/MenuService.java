@@ -62,11 +62,13 @@ public class MenuService {
 
         if (result > 0) {
             // sqlSession에 있는 커밋이랑 롤백을 메소드를 쓰는 것.
+            // 데이터 베이스에 변경사항을 확정짓는것
             sqlSession.commit();
         } else {
+            //아니면 트랜잭션을 롤백, 실패하면 철회한다는 뜻
             sqlSession.rollback();
         }
-
+// 0보다 result 가 크면 트루 아니면 폴스
         return result > 0? true: false;
 
     }

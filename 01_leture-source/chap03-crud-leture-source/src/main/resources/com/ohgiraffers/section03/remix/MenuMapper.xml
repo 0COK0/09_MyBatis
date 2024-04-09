@@ -39,7 +39,7 @@
         ,   ORDERABLE_STATUS
         FROM TBL_MENU
         WHERE ORDERABLE_STATUS = 'Y'
-        AND MENUA_CODE = #{ code }
+        AND MENU_CODE = #{ code }
     </select>
     <insert id="registMenu" parameterType="com.ohgiraffers.section03.remix.MenuDTO">
         INSERT

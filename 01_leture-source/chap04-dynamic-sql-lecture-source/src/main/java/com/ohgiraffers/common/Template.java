@@ -1,5 +1,4 @@
-package com.ohgiraffer.section01.xmlconfig;
-
+package com.ohgiraffers.common;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -14,18 +13,19 @@ public class Template {
     private static SqlSessionFactory sqlSessionFactory;
 
     public static SqlSession getSqlSession() {
-        if(sqlSessionFactory == null) {
-            String resource = "mybatis-config.xml";
 
+        if (sqlSessionFactory == null) {
+            String rasource = "config/mybatis-config.xml";
             try {
-                InputStream inputStream = Resources.getResourceAsStream(resource);
+                InputStream inputStream = Resources.getResourceAsStream(rasource);
                 sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
 
+
         }
+
+        return sqlSessionFactory.openSession(false);
     }
-
-
 }
